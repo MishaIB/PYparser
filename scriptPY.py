@@ -9,15 +9,14 @@ while True:
     response=requests.get(url,headers={"User-Agent":"Mozilla/5.0"}).text
     soap= BeautifulSoup(response,"html.parser")
     links=soap.find_all("img",class_="serp-item__thumb justifier__thumb")
-    if not os.path.exists('dataset'):
-        os.mkdir('dataset')
-    if not os.path.exists(subdir):
-        os.mkdir(subdir)
+
+    if not os.path.exists(f'dataset/{subdir}'):
+        os.makedirs(f'dataset/{subdir}')
     for link in links:
         link = link.get("src")
         urls='https:'+ link
         img_data=requests.get(urls,verify=False).content
-        with open(f'{subdir}/{image_number}.jpg','wb') as file:
+        with open(f'dataset/{subdir}/{image_number}.jpg','wb') as file:
             file.write(img_data)
         image_number+=1
         print(f'изображение {image_number}.jpg успешно скачено')
