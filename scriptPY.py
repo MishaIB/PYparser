@@ -38,7 +38,7 @@ def main():
     print('Hello')
     search_images('cat')
     search_images('dog')
-    print('buе')
+    print('byе')
     
 if __name__ == '__main__':
     main()
