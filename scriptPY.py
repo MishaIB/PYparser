@@ -11,9 +11,13 @@ headers = {
 def save_img(img_data,subdir,image_number):
      with open(f'dataset/{subdir}/{str(image_number).zfill(4)}.jpg','wb') as file:
                 file.write(img_data)
+                
+                
 def create_file(subdir):
     if not os.path.exists(f'dataset/{subdir}'):
         os.makedirs(f'dataset/{subdir}')
+        
+        
 def search_images(subdir):
     create_file(subdir)
     page_number=0
@@ -32,13 +36,16 @@ def search_images(subdir):
             image_number+=1
             print(f'изображение {str(image_number).zfill(4)}.jpg успешно скачено')
         page_number+=1 
-        if image_number>100:
+        if image_number>1000:
             break    
+        
+        
 def main():
     print('Hello')
     search_images('cat')
     search_images('dog')
     print('byе')
+    
     
 if __name__ == '__main__':
     main()
